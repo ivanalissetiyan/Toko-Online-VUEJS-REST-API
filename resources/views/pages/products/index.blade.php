@@ -33,7 +33,8 @@
                                                 <a href="#" class="btn btn-info btn-sm">
                                                     <i class="fa fa-picture-o"></i>
                                                 </a>
-                                                <a href="#" class="btn btn-primary btn-sm">
+                                                <a href="{{ route('products.edit', $item->id) }}"
+                                                    class="btn btn-primary btn-sm">
                                                     <i class="fa fa-pencil"></i>
                                                 </a>
                                                 <form action="#" method="delete" class="d-inline">
