@@ -6,6 +6,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
+use Illuminate\Queue\Jobs\RedisJob;
 use Illuminate\Support\Str;
 
 class ProductController extends Controller
@@ -100,6 +101,13 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // ngetes pakai model binding
+        // $product->delete();
+        // return redirect()->route('products.index');
+
+        $item = Product::findOrFail($id);
+        $item->delete();
+
+        return redirect()->route('products.index');
     }
 }
