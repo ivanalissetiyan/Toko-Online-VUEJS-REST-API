@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="orders">
-        <row>
+        <div class="row">
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
@@ -44,20 +44,20 @@
                                                     </button>
                                                 </form>
                                             </td>
-                                        @empty
+                                    </tr>
+                                @empty
                                     <tr>
                                         <td colspan="6" class="text-center p-5">
                                             Data Tidak Tersedia
                                         </td>
                                     </tr>
                                     @endforelse
-                                    </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
             </div>
-        </row>
+        </div>
     </div>
 @endsection
