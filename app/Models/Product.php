@@ -14,8 +14,8 @@ class Product extends Model
         'name', 'slug', 'type', 'description', 'price', 'quantity'
     ];
 
-    // public function galleries()
-    // {
-    //     return $this->hasMany(ProductGallery::class, 'products_id');
-    // }
+    public function galleries()
+    {
+        return $this->hasMany(ProductGallery::class, 'products_id');
+    }
 }
