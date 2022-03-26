@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\ProductRequest;
-use Illuminate\Queue\Jobs\RedisJob;
+use App\Http\Requests\ProductGalleryRequest;
 use Illuminate\Support\Str;
+use App\Models\Product;
+use App\models\ProductGallery;
+use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class ProductGalleryController extends Controller
 {
 
     /**
@@ -29,8 +28,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $items = Product::all();
-        return view('pages.products.index', [
+        $items = ProductGallery::with('product')->get();
+
+        return view('pages.product-galleries.index')->with([
             'items' => $items
         ]);
     }
@@ -42,7 +42,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('pages.products.create');
+        //
     }
 
     /**
@@ -51,13 +51,9 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProductRequest $request)
+    public function store(Request $request)
     {
-        $data = $request->all();
-        $data['slug'] = Str::slug($request->name);
-
-        Product::create($data);
-        return redirect()->route('products.index');
+        //
     }
 
     /**
@@ -79,11 +75,7 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $item = Product::findOrFail($id);
-
-        return view('pages.products.edit')->with([
-            'item' => $item
-        ]);
+        //
     }
 
     /**
@@ -95,13 +87,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = $request->all();
-        $data['slug'] = Str::slug($request->name);
-
-        $item = Product::findOrFail($id);
-        $item->update($data);
-
-        return redirect()->route('products.index');
+        //
     }
 
     /**
@@ -112,13 +98,6 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        // ngetes pakai model binding
-        // $product->delete();
-        // return redirect()->route('products.index');
-
-        $item = Product::findOrFail($id);
-        $item->delete();
-
-        return redirect()->route('products.index');
+        //
     }
 }
