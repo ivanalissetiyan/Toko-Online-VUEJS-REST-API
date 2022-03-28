@@ -21,5 +21,10 @@ Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
 Auth::routes(['register' => true]);
 
+Route::get('products/{id}/gallery', [ProductController::class, 'gallery'])->name('products.gallery');
 Route::resource('products', ProductController::class);
 Route::resource('product-galleries', ProductGalleryController::class);
+
+
+// Cara laravel 6 & 7
+// Route::get('products/{id}/gallery', 'ProductController@gallery')->name('products.gallery');
